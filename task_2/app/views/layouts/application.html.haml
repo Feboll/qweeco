@@ -1,0 +1,38 @@
+!!!
+%html
+	%head
+		%title Task2
+		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+		= javascript_include_tag 'application', 'data-turbolinks-track' => true
+		= csrf_meta_tags
+	%body
+		%nav.navbar.navbar-default{:role => "navigation"}
+			.container-fluid
+				/ Brand and toggle get grouped for better mobile display
+				.navbar-header
+					%a.navbar-brand{:href => "#"} Task
+				/ Collect the nav links, forms, and other content for toggling
+				#bs-example-navbar-collapse-1.collapse.navbar-collapse
+					%ul.nav.navbar-nav.navbar-right
+						%li
+							%a{:href => "#"} Главная
+						- if !user_signed_in?
+							%li
+								= link_to "Войти", new_user_session_path
+						- else 
+							%li.dropdown
+								= link_to root_path, {:class => "dropdown-toggle", "aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"} do
+									%span Управление профилем
+									%span.caret
+								%ul.dropdown-menu{:role => "menu"}
+									%li
+										= link_to "Редактировать профиль", edit_user_registration_path
+									%li
+										= link_to "Управление объявлениями", user_index_path
+									%li.divider
+									%li
+										= link_to "Выйти", destroy_user_session_path, method: :delete
+				/ /.navbar-collapse
+			/ /.container-fluid
+		.container 
+			= yield

@@ -1,0 +1,11 @@
+.row
+	.col-sm-9
+		- if @posts.empty?
+			%h1
+				Нет объявлений
+		- else
+			- @posts.each do |post|
+				.row
+					.col-sm-12
+	.col-sm-3.search
+		%h6 Поиск
