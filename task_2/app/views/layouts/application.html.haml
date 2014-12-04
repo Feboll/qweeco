@@ -15,11 +15,13 @@
 				#bs-example-navbar-collapse-1.collapse.navbar-collapse
 					%ul.nav.navbar-nav.navbar-right
 						%li
-							%a{:href => "#"} Главная
+							= link_to "Главная", root_path
 						- if !user_signed_in?
 							%li
 								= link_to "Войти", new_user_session_path
 						- else 
+							%li
+								= link_to "Добавить объявление", new_post_path
 							%li.dropdown
 								= link_to root_path, {:class => "dropdown-toggle", "aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"} do
 									%span Управление профилем

@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130211751) do
+ActiveRecord::Schema.define(version: 20141204201020) do
+
+  create_table "post_pictures", force: true do |t|
+    t.boolean  "main_picture", default: false
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_pictures", ["main_picture"], name: "index_post_pictures_on_main_picture", using: :btree
+  add_index "post_pictures", ["post_id"], name: "index_post_pictures_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "title"
     t.text     "description"
     t.string   "country"
     t.string   "city"
@@ -26,6 +35,8 @@ ActiveRecord::Schema.define(version: 20141130211751) do
     t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "type_home"
   end
 
   create_table "users", force: true do |t|

@@ -6,6 +6,16 @@
 		- else
 			- @posts.each do |post|
 				.row
-					.col-sm-12
+					.col-sm-2
+						Картинка
+					.col-sm-8
+						= link_to "#{post.street}, #{post.house} #{post.apartment}", post_path(post.id)
+						%h6
+							= post.type_home
+						%h4 #{post.area} м2
+						%p
+							= post.description
+					.col-sm-1
+						%h2 #{post.price} у.е.
 	.col-sm-3.search
 		%h6 Поиск

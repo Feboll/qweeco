@@ -1,0 +1,40 @@
+%h3
+	Создать конференцию
+	
+=form_for(@post, :url => posts_path, :html => {:class => "form-horizontal", :role => "form", :method => "post"}) do |post|
+	.form-group
+		= post.label "Тип жилья", class: "col-sm-3 control-label"
+		.col-sm-9
+			= post.text_field	:type_home, class: "form-control", :placeholder => "Тип"
+
+	.form-group
+		= post.label "Описание", class: "col-sm-3 control-label"
+		.col-sm-9
+			= post.text_area	:description, class: "form-control", :placeholder => "Описание"
+
+	.form-group
+		= post.label "Адресс", class: "col-sm-3 control-label"
+		.col-sm-3
+			= post.text_field	:country, class: "form-control", :placeholder => "Страна"
+		.col-sm-3
+			= post.text_field	:city, class: "form-control", :placeholder => "Город(деревня)"
+	.form-group
+		.col-sm-3
+		.col-sm-7
+			= post.text_field	:street, class: "form-control", :placeholder => "Улица"
+		.col-sm-1
+			= post.text_field	:house, class: "form-control", :placeholder => "дом"
+		.col-sm-1
+			= post.text_field	:apartment, class: "form-control", :placeholder => "кв"
+
+	.form-group
+		= post.label "Площадь", class: "col-sm-3 control-label"
+		.col-sm-2
+			= post.text_field	:area, class: "form-control", :placeholder => "Площадь (м2)"
+
+	.form-group
+		= post.label "Цена", class: "col-sm-3 control-label"
+		.col-sm-2
+			= post.text_field	:price, class: "form-control", :placeholder => "цена (у.е.)"
+
+	= post.submit("Создать", {:class => "btn btn-success btn-block"})

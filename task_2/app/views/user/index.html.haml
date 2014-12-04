@@ -1,1 +1,23 @@
-index.html.haml
+.row
+	.col-sm-12
+		%table.table
+			%caption Optional table caption.
+			%thead
+				%tr
+					%th #
+					%th Картинка
+					%th Ссылка
+					%th Управление
+			%tbody
+				- @posts.each do |post|
+					%tr
+						%td #{post.id}
+						%td 
+							= link_to "Добавить картинку"
+						%td 
+							= link_to "#{post.street}, #{post.house} #{post.apartment}", post_path(post.id)
+						%td 
+							= link_to edit_post_path(post.id) do
+								%span.glyphicon.glyphicon-pencil{:"aria-hidden" =>"true"}
+							= link_to post_path(post.id), method: :delete, data: { confirm: 'Вы действительно хотите удалить?' } do
+								%span.glyphicon.glyphicon-minus{:"aria-hidden" =>"true"}
